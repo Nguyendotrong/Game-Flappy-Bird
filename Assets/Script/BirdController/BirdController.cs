@@ -8,6 +8,9 @@ public class BirdController : MonoBehaviour
 
     private Rigidbody2D myBody;
     private Animator anim;
+    private bool isALive;
+    private bool didFlap;
+
     [SerializeField]
     private AudioSource audioSource;
 
@@ -17,6 +20,7 @@ public class BirdController : MonoBehaviour
 
     void Awake()
     {
+        isALive = true;
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -26,11 +30,18 @@ public class BirdController : MonoBehaviour
     }
     void _BirdMoveMent()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(isALive)
+            if(didFlap)
+            {
+                didFlap = false; 
+                myBody.velocity = new Vector2(myBody.velocity.x, bounceForce);
+                audioSource.PlayOneShot(flyClip);
+            }    
+        /*if (Input.GetMouseButtonDown(0))
         {
             myBody.velocity = new Vector2(myBody.velocity.x, bounceForce);
             audioSource.PlayOneShot(flyClip);
-        }
+        }*/
 
         if (myBody.velocity.y > 0)
         {
@@ -48,5 +59,10 @@ public class BirdController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angel);
 
         }
+       
+    }
+    public void FlappButton()
+    {
+        didFlap = true;
     }
 }
