@@ -10,6 +10,10 @@ public class Pipeholder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (BirdController.instance != null)
+            if (BirdController.instance.flag == 1)
+                Destroy(GetComponent<Pipeholder>());//khi và chạm với ống nước-> flag =1 
+                                               //-> xóa file sctript của pipe holder-> ngừng chạy
         _PipeMovement();
 
     }
@@ -19,5 +23,14 @@ public class Pipeholder : MonoBehaviour
         temp.x -= speed * Time.deltaTime;
         transform.position = temp;
 
+    }
+    /*void OnCollisionEnter2D(Collision2D target) // 2 đối tượng đều ko tích isTrigger
+    {
+
+    }*/
+    void OnTriggerEnter2D(Collider2D target) //1 trong 2 đối tượng có tích isTrigger
+    {
+        if (target.tag == "Destroy")
+            Destroy(gameObject);
     }
 }
