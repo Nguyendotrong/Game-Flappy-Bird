@@ -14,9 +14,9 @@ public class SpawnerPipe : MonoBehaviour
 
    IEnumerator Spawner()
     {
-        yield return new WaitForSeconds (1);
+        yield return new WaitForSeconds (1.22f);
         Vector3 temp = transform.position;
-        temp.y = Random.Range(-2.5f, 2.5f);
+        temp.y = Random.Range(-2.4f, 2.4f);
         Instantiate(pipeHolder, temp, Quaternion.identity);// sinh ra ống nuocs tại vị trí..,cố định , không xoay.
 
         StartCoroutine(Spawner()); //sinh ra tuần hoàn
