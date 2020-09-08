@@ -11,7 +11,7 @@ public class Pipeholder : MonoBehaviour
     void Update()
     {
         if (BirdController.instance != null)
-            if (BirdController.instance.flag == 1)
+            if (BirdController.instance.flag == 1)  //Biến cờ được thể hiện từ script BirdController
                 Destroy(GetComponent<Pipeholder>());//khi và chạm với ống nước-> flag =1 
                                                //-> xóa file sctript của pipe holder-> ngừng chạy
         _PipeMovement();

@@ -60,9 +60,9 @@
     <Compile Include="Assets\Script\BirdController\BirdController.cs" />
     <Compile Include="Assets\Script\PipeController\Pipeholder.cs" />
     <Compile Include="Assets\Script\BGScaler\BGScaler.cs" />
+    <Compile Include="Assets\Script\Controller\GamePlayController.cs" />
     <Compile Include="Assets\Script\SpawnerPipe\SpawnerPipe.cs" />
     <Compile Include="Assets\Script\Controller\MainMenuController.cs" />
-    <Compile Include="Assets\Script\Controller\GamePlayController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ndt05/source/repos/Game-Flappy-Bird/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

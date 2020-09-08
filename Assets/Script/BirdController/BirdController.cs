@@ -20,7 +20,8 @@ public class BirdController : MonoBehaviour
     public float flag = 0; //  Bird còn sống: flag = 0, Bird chết: flag = 1
     private GameObject spawner;
 
-    public static BirdController instance; //Đồng bộ hóa các biến và các strcipt với nhau
+    public static BirdController instance; //Đồng bộ hóa các biến và các strcipt với 
+    public int score = 0;
 
     void MakeInstance()
     {
@@ -54,7 +55,8 @@ public class BirdController : MonoBehaviour
             audioSource.PlayOneShot(flyClip);
         }*/
 
-        if (myBody.velocity.y > 0)
+        if (myBody.velocity.y > 0)  // chỉnh rotation của con Bird, 
+                                        //khi nó bay lên thì miệng chốc lên và ngược lại
         {
             float angel = 0;
             angel = Mathf.Lerp(0, 90, myBody.velocity.y / 7);
@@ -78,8 +80,12 @@ public class BirdController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D target)// khi bay qua thành công thì phát âm thanh, và tăng điểmS 
     {
-        if(target.tag == "PipeHolder" )
-        {
+        if(target.tag == "PipeHolder" )                      //vì hàm _setScore nằm ở GamePlayController.cs
+        {                                                    //nên bên đó phải tạo instance và bên này                   
+            score++;                                        //phải gọi thông qua instance
+            
+            if (GamePlayController.instance != null)
+                GamePlayController.instance._setScore(score);
             audioSource.PlayOneShot(pingClip);
         }    
     }
@@ -87,17 +93,20 @@ public class BirdController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D target)// khi đụng đát hoặc ống nước sẽ dừng game, phát âm thanh,
     {
         if(target.gameObject.tag == "Ground" || target.gameObject.tag == "Pipe")
-        {
-            flag = 1;
-            if (isALive == true)
+
+        {                               //Bird chết->FLAG đổi trạng thái và được instance ở bên PipeHolder
+            flag = 1;                     //để hủy script của pipeHolder-> nó sẽ ngừng di chuyển 
+
+            if (isALive == true)            //    khi bird chết không cho click vào FlappButton
             {
                 isALive = false;
                 Destroy(spawner);
-
                 audioSource.PlayOneShot(DiedClip);
                 anim.SetTrigger("Died"); // chuyển animation sang died
-
             }
+
+            if (GamePlayController.instance != null)
+                GamePlayController.instance._BirdDiedShowGamePanel();
 
         }    
     }
