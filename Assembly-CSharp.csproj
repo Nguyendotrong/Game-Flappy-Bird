@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\BGScaler\BGScaler.cs" />
     <Compile Include="Assets\Script\Controller\GamePlayController.cs" />
     <Compile Include="Assets\Script\SpawnerPipe\SpawnerPipe.cs" />
+    <Compile Include="Assets\Script\Controller\GameManager.cs" />
     <Compile Include="Assets\Script\Controller\MainMenuController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ndt05/source/repos/Game-Flappy-Bird/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
