@@ -36,11 +36,15 @@ public class GamePlayController : MonoBehaviour
 
     public void _setScore(int score)
     {
-        scoreText.text = "" + score.ToString();
+        scoreText.text = "" + score;
     }
-    public void _BirdDiedShowGamePanel()
+    public void _BirdDiedShowGamePanel(int score)
     {
         gameOverPanel.SetActive(true);
+        endScoreText.text = "" + score;
+        if (score > GameManager.instance.GetHightScore())
+            GameManager.instance.SetHightScore(score);
+        bestScoreText.text = "" + GameManager.instance.GetHightScore();
     }
     public void _MenuButton()
     {

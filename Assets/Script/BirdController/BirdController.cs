@@ -106,7 +106,7 @@ public class BirdController : MonoBehaviour
             }
 
             if (GamePlayController.instance != null)
-                GamePlayController.instance._BirdDiedShowGamePanel();
+                GamePlayController.instance._BirdDiedShowGamePanel(score);
 
         }    
     }

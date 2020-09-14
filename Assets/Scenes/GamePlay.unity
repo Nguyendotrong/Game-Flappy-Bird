@@ -1282,7 +1282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: End score
+  m_Text: Best score
 --- !u!222 &1179293018
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1605,8 +1605,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instructionButton: {fileID: 1059116511}
   scoreText: {fileID: 2084857779}
-  bestScoreText: {fileID: 0}
-  endScoreText: {fileID: 0}
+  bestScoreText: {fileID: 1399900432}
+  endScoreText: {fileID: 1658658572}
   gameOverPanel: {fileID: 1974197887}
   pausePanel: {fileID: 980097646}
 --- !u!4 &1563965835
